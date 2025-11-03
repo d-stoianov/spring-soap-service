@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:cat="http://spring.io/guides/gs-producing-web-service/categories">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cat:getCategoryRequest>
+         <cat:name>Dairy</cat:name>
+      </cat:getCategoryRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
