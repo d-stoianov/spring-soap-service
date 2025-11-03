@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           xmlns:cat="http://spring.io/guides/gs-producing-web-service/categories"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://spring.io/guides/gs-producing-web-service/categories"
+               schemaLocation="categories.xsd"/>
+
+    <xs:element name="getGoodRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getGoodResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="good" type="tns:good"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="good">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="category" type="cat:category"/>
+            <xs:element name="amount" type="xs:int"/>
+            <xs:element name="price" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
