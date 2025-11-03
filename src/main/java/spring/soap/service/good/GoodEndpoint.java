@@ -1,4 +1,4 @@
-package spring.soap.service;
+package spring.soap.service.good;
 
 import io.spring.guides.gs_producing_web_service.GetGoodRequest;
 import io.spring.guides.gs_producing_web_service.GetGoodResponse;

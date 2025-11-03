@@ -23,18 +23,35 @@ public class WebServiceConfig {
         return new ServletRegistrationBean<>(servlet, "/ws/*");
     }
 
+    // Goods
     @Bean(name = "goods")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema goodsSchema) {
-        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("CountriesPort");
-        wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
-        wsdl11Definition.setSchema(goodsSchema);
-        return wsdl11Definition;
+    public DefaultWsdl11Definition goodsWsdl(XsdSchema goodsSchema) {
+        DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
+        wsdl.setPortTypeName("GoodsPort");
+        wsdl.setLocationUri("/ws");
+        wsdl.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
+        wsdl.setSchema(goodsSchema);
+        return wsdl;
     }
 
     @Bean
     public XsdSchema goodsSchema() {
         return new SimpleXsdSchema(new ClassPathResource("goods.xsd"));
+    }
+
+    // Categories
+    @Bean(name = "categories")
+    public DefaultWsdl11Definition categoriesWsdl(XsdSchema categoriesSchema) {
+        DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
+        wsdl.setPortTypeName("CategoriesPort");
+        wsdl.setLocationUri("/ws");
+        wsdl.setTargetNamespace("http://spring.io/guides/gs-producing-web-service/categories");
+        wsdl.setSchema(categoriesSchema);
+        return wsdl;
+    }
+
+    @Bean
+    public XsdSchema categoriesSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("categories.xsd"));
     }
 }
