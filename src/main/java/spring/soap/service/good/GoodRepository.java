@@ -8,19 +8,23 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+import spring.soap.service.category.CategoryRepository;
 
 @Component
 public class GoodRepository {
     private static final Map<String, Good> goods = new HashMap<>();
 
+    private final CategoryRepository categoryRepository;
+
+    public GoodRepository(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
+
     @PostConstruct
     public void initData() {
-        Category fruitsCat = new Category();
-        fruitsCat.setName("Fruits");
-
-        Category dairyCat = new Category();
-        dairyCat.setName("Dairy");
-
+        Category fruitsCat = this.categoryRepository.findCategory("Fruits");
+        Category dairyCat = this.categoryRepository.findCategory("Dairy");
 
         Good orange = new Good();
         orange.setName("Orange");
